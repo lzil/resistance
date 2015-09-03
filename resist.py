@@ -11,7 +11,9 @@ assignRoles = roles[numPlayers]
 shuffle(assignRoles)
 
 for i in range(numPlayers):
-	print assignRoles[i]
-	hide = raw_input("Type Y to continue ")
-	if str(hide) == 'Y':
+	printNext = raw_input("Player " + str(i + 1) + ": Press Enter to reveal your role ")
+	if str(printNext) == "":
+		print assignRoles[i]
+	hide = raw_input("Press Enter to hide your role ")
+	if str(hide) == "":
 		os.system('clear')
