@@ -1,11 +1,11 @@
 import os, sys
-from random import shuffle
+import random
 import getpass
 
 def main():
 	os.system('clear')
 	numPlayers = int(raw_input("Please enter the number of players (5-10): "))
-	numComputerPlayers = int(raw_input("Please enter the number of computer players: ")
+	numComputerPlayers = int(raw_input("Please enter the number of computer players: "))
 	numHumanPlayers = numPlayers - numComputerPlayers
 	players = []
 
@@ -19,7 +19,7 @@ def main():
 	roles = {5: ['MERLIN', 'PERCIVAL', 'RESISTANCE', 'MORGANA', 'ASSASSIN'], 6: ['MERLIN', 'PERCIVAL', 'RESISTANCE', 'RESISTANCE', 'MORGANA', 'ASSASSIN'], 7: ['MERLIN', 'PERCIVAL', 'RESISTANCE', 'RESISTANCE', 'MORGANA', 'ASSASSIN', 'SPY'], 8: ['MERLIN', 'PERCIVAL', 'RESISTANCE', 'RESISTANCE', 'RESISTANCE', 'MORGANA', 'ASSASSIN', 'SPY'], 9: ['MERLIN', 'PERCIVAL', 'RESISTANCE', 'RESISTANCE', 'RESISTANCE', 'RESISTANCE', 'MORGANA', 'ASSASSIN', 'SPY'], 10: ['MERLIN', 'PERCIVAL', 'RESISTANCE', 'RESISTANCE', 'RESISTANCE', 'RESISTANCE', 'MORGANA', 'ASSASSIN', 'SPY', 'SPY']}
 
 	assignRoles = roles[numPlayers]
-	shuffle(assignRoles)
+	random.shuffle(assignRoles)
 	rememberRoles = {}
 
 	for i in range(numPlayers):
@@ -33,8 +33,7 @@ def main():
 		if str(hide) == "":
 			os.system('clear')
 
-	shuffle(players)
-	currentPlayer = 0
+	currentPlayer = random.randint(1, numPlayers)
 	score = {'R': 0, 'S': 0}
 	win = 0
 
