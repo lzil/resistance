@@ -4,14 +4,35 @@ import getpass
 
 def main():
 	os.system('clear')
-	numPlayers = int(raw_input("Please enter the number of players (5-10): "))
-	numComputerPlayers = int(raw_input("Please enter the number of computer players: "))
-	numHumanPlayers = numPlayers - numComputerPlayers
+	numPlayers = 0
+	numHumanPlayers = 0
+	while numPlayers > 10 or numPlayers < 5:
+		try:
+			numPlayers = int(raw_input("Please enter the number of players (5-10): "))
+			if numPlayers > 10 or numPlayers < 5:
+				print "Please enter a number of players between 5 and 10!"
+		except ValueError:
+			print "Please enter a number of players between 5 and 10!"
+	while numHumanPlayers > numPlayers or numHumanPlayers < 1:
+		try:
+			numHumanPlayers = int(raw_input("Please enter the number of human players: "))
+			if numHumanPlayers > numPlayers or numHumanPlayers < 1:
+				print "Please enter a number of players between 1 and " + str(numPlayers) + "!"
+		except ValueError:
+			print "Please enter a number of players between 1 and " + str(numPlayers) + "!"
+	numComputerPlayers = numPlayers - numHumanPlayers
 	players = []
 
 	for i in range(numPlayers):
-		playerName = raw_input("Player " + str(i + 1) + " please enter your name: ")
-		players.append(playerName)
+		while 1:
+			playerName = raw_input("Player " + str(i + 1) + " please enter your name: ")
+			if playerName == '':
+				print "Don't leave the name blank ._."
+			elif playerName not in players:
+				players.append(playerName)
+				break
+			else:
+				print "This name is already taken! Please choose another."
 	os.system('clear')
 
 	missionNumbers = {5: [2, 3, 2, 3, 3], 6: [2, 3, 4, 3, 4], 7: [2, 3, 3, 4, 4], 8: [3, 4, 4, 5, 5], 9: [3, 4, 4, 5, 5], 10: [3, 4, 4, 5, 5]}
