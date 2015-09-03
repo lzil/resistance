@@ -1,7 +1,7 @@
 import os, sys
 from random import shuffle
 
-numPlayers = int(input("Please enter the number of players (5-10): "))
+numPlayers = int(raw_input("Please enter the number of players (5-10): "))
 
 missionNumbers = {5: [2, 3, 2, 3, 3], 6: [2, 3, 4, 3, 4], 7: [2, 3, 3, 4, 4], 8: [3, 4, 4, 5, 5], 9: [3, 4, 4, 5, 5], 10: [3, 4, 4, 5, 5]}
 
@@ -12,7 +12,6 @@ shuffle(assignRoles)
 
 for i in range(numPlayers):
 	print assignRoles[i]
-	hide = input("Type Y to continue ")
+	hide = raw_input("Type Y to continue ")
 	if str(hide) == 'Y':
 		os.system('clear')
-
