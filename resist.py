@@ -110,4 +110,4 @@ if win == 'R':
 
 print "ROLES:\n\n"
 for role in assignRoles:
-	print role + ": " + rememberRole[role] + "\n\n"
+	print role + ": " + rememberRoles[role] + "\n\n"
