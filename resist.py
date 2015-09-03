@@ -15,6 +15,5 @@ for i in range(numPlayers):
 	print assignRoles[i]
 	hide = input("Type Y to continue")
 	if hide:
-		print '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n'
-
+		os.system('clear')
 
