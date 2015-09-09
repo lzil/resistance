@@ -22,14 +22,16 @@ def main():
 			print "Please enter a number of players between 1 and " + str(numPlayers) + "!"
 	numComputerPlayers = numPlayers - numHumanPlayers
 	players = []
+	for i in range(numComputerPlayers):
+		players.append(("CPU" + str(i + 1), 0))
 
-	for i in range(numPlayers):
+	for i in range(numHumanPlayers):
 		while 1:
-			playerName = raw_input("Player " + str(i + 1) + " please enter your name: ")
+			playerName = raw_input("Human player " + str(i + 1) + " please enter your name: ")
 			if playerName == '':
 				print "Don't leave the name blank ._."
-			elif playerName not in players:
-				players.append(playerName)
+			elif len([x for x in players if playerName == x[0]]) == 0:
+				players.append((playerName, 1))
 				break
 			else:
 				print "This name is already taken! Please choose another."
@@ -45,15 +47,18 @@ def main():
 
 	for i in range(numPlayers):
 		currentPlayer = players[i]
-		printNext = raw_input(currentPlayer + ": Press Enter to reveal your role ")
-		if str(printNext) == "":
-			currentRole = assignRoles[i]
-			print currentRole
-			rememberRoles[currentRole] = currentPlayer
-		hide = raw_input("Press Enter to hide your role ")
-		if str(hide) == "":
-			os.system('clear')
+		if currentPlayer[1] == 1:
+			printNext = raw_input(currentPlayer[0] + ": Press Enter to reveal your role ")
+			if str(printNext) == "":
+				currentRole = assignRoles[i]
+				print currentRole
+				rememberRoles[currentRole] = currentPlayer
+			hide = raw_input("Press Enter to hide your role ")
+			if str(hide) == "":
+				os.system('clear')
 
+	print players
+	print rememberRoles
 	currentPlayer = random.randint(1, numPlayers)
 	score = {'R': 0, 'S': 0}
 	win = 0
